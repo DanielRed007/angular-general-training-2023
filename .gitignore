@@ -21,7 +21,7 @@ akkadian-teleport-request/yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
-.vscode/*
+akkadian-teleport-request/.vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
