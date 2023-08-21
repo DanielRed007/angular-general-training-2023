@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-akkadian-header',
+  selector: 'akkadian-header',
   templateUrl: './akkadian-header.component.html',
-  styleUrls: ['./akkadian-header.component.css']
+  styleUrls: ['./akkadian-header.component.scss']
 })
 export class AkkadianHeaderComponent implements OnInit {
 
