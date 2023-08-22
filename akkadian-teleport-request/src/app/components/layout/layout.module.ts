@@ -6,22 +6,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   imports: [
     CommonModule,
-    MatToolbarModule, 
-    MatButtonModule, 
+    MatToolbarModule,
+    MatButtonModule,
     MatIconModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDividerModule
   ],
-  declarations: [
-    AkkadianHeaderComponent, 
-    LayoutComponent
-  ],
-  exports: [
-    AkkadianHeaderComponent, 
-    LayoutComponent
-  ]
+  declarations: [AkkadianHeaderComponent, LayoutComponent],
+  exports: [AkkadianHeaderComponent, LayoutComponent],
 })
-export class LayoutModule { }
+export class LayoutModule {}
