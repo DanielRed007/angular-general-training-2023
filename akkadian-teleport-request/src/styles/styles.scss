@@ -55,7 +55,7 @@ $green-palette: (
 $accent-palette: $green-palette;
 $primary-palette: $electric-yellow-palette;
 
-
+$akkadian-primary-bg: #ffeb3b;
 $akkadian-primary: mat.define-palette($primary-palette, 500);
 $akkadian-accent: mat.define-palette($accent-palette, 900, 100, 400);
 $akkadian-warn: mat.define-palette(mat.$pink-palette);
@@ -83,4 +83,8 @@ body {
   margin: 0;
   font-family: 'Nunito', sans-serif;
   background: #303030;
+}
+
+.primary-background{
+  background-color: $akkadian-primary-bg;
 }

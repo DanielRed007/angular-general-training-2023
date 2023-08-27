@@ -7,6 +7,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
+import { LayoutRoutingModule } from './layout.routing.module';
+import { RequestComponent } from './request/request.component';
+import { HelpComponent } from './help/help.component';
+import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   imports: [
@@ -15,9 +20,24 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     MatIconModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    LayoutRoutingModule,
   ],
-  declarations: [AkkadianHeaderComponent, LayoutComponent],
-  exports: [AkkadianHeaderComponent, LayoutComponent],
+  declarations: [
+    AkkadianHeaderComponent,
+    LayoutComponent,
+    RequestComponent,
+    HelpComponent,
+    AboutComponent,
+    HomeComponent
+  ],
+  exports: [
+    AkkadianHeaderComponent,
+    LayoutComponent,
+    RequestComponent,
+    HelpComponent,
+    AboutComponent,
+    HomeComponent
+  ],
 })
 export class LayoutModule {}
