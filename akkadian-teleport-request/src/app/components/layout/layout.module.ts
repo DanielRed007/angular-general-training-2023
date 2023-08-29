@@ -12,6 +12,7 @@ import { RequestComponent } from './request/request.component';
 import { HelpComponent } from './help/help.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -22,6 +23,8 @@ import { HomeComponent } from './home/home.component';
     MatGridListModule,
     MatDividerModule,
     LayoutRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [
     AkkadianHeaderComponent,
