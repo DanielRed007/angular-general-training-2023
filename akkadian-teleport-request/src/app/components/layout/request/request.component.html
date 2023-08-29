@@ -1,3 +1,29 @@
-<p>
-  request works!
-</p>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <label for="select1">Select Option 1:</label>
+  <select id="select1" formControlName="selectOption1">
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+    <!-- Add more options as needed -->
+  </select>
+
+  <label for="select2">Select Option 2:</label>
+  <select id="select2" formControlName="selectOption2">
+    <option value="optionA">Option A</option>
+    <option value="optionB">Option B</option>
+    <!-- Add more options as needed -->
+  </select>
+
+  <label for="inputField1">String Field 1:</label>
+  <input type="text" id="inputField1" formControlName="stringField1">
+
+  <label for="inputField2">String Field 2:</label>
+  <input type="text" id="inputField2" formControlName="stringField2">
+
+  <label for="numericField">Numeric Integer Field:</label>
+  <input type="number" id="numericField" formControlName="numericIntegerField">
+
+  <label for="currencyField">Currency Field:</label>
+  <input type="number" id="currencyField" formControlName="currencyField">
+
+  <button type="submit">Submit</button>
+</form>
