@@ -1,29 +1,40 @@
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-  <label for="select1">Select Option 1:</label>
-  <select id="select1" formControlName="selectOption1">
-    <option value="option1">Option 1</option>
-    <option value="option2">Option 2</option>
-    <!-- Add more options as needed -->
-  </select>
+  <mat-form-field appearance="outline">
+    <mat-label for="select1">Select Option 1:</mat-label>
+    <mat-select id="select1" formControlName="selectOption1">
+      <mat-option value="option1">Option 1</mat-option>
+      <mat-option value="option2">Option 2</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <label for="select2">Select Option 2:</label>
-  <select id="select2" formControlName="selectOption2">
-    <option value="optionA">Option A</option>
-    <option value="optionB">Option B</option>
-    <!-- Add more options as needed -->
-  </select>
+  <mat-form-field appearance="outline">
+    <mat-label for="select2">Select Option 2:</mat-label>
+    <mat-select id="select2" formControlName="selectOption2">
+      <mat-option value="optionA">Option A</mat-option>
+      <mat-option value="optionB">Option B</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <label for="inputField1">String Field 1:</label>
-  <input type="text" id="inputField1" formControlName="stringField1">
+  <mat-form-field appearance="outline">
+    <mat-label for="inputField1">String Field 1:</mat-label>
+    <input matInput type="text" id="inputField1" formControlName="stringField1">
+  </mat-form-field>
 
-  <label for="inputField2">String Field 2:</label>
-  <input type="text" id="inputField2" formControlName="stringField2">
+  <mat-form-field appearance="outline">
+    <mat-label for="inputField2">String Field 2:</mat-label>
+    <input matInput type="text" id="inputField2" formControlName="stringField2">
+  </mat-form-field>
 
-  <label for="numericField">Numeric Integer Field:</label>
-  <input type="number" id="numericField" formControlName="numericIntegerField">
+  <mat-form-field appearance="outline">
+    <mat-label for="numericField">Numeric Integer Field:</mat-label>
+    <input matInput type="number" id="numericField" formControlName="numericIntegerField">
+  </mat-form-field>
 
-  <label for="currencyField">Currency Field:</label>
-  <input type="number" id="currencyField" formControlName="currencyField">
+  <mat-form-field appearance="outline">
+    <mat-label for="currencyField">Currency Field:</mat-label>
+    <input matInput type="number" id="currencyField" formControlName="currencyField">
+    <span matPrefix>$</span>
+  </mat-form-field>
 
-  <button type="submit">Submit</button>
+  <button mat-raised-button type="submit">Submit</button>
 </form>

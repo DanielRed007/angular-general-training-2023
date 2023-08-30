@@ -13,6 +13,10 @@ import { HelpComponent } from './help/help.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import {NgFor} from '@angular/common';
 
 @NgModule({
   imports: [
@@ -24,7 +28,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDividerModule,
     LayoutRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    NgFor
   ],
   declarations: [
     AkkadianHeaderComponent,
@@ -32,7 +40,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RequestComponent,
     HelpComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
   ],
   exports: [
     AkkadianHeaderComponent,
@@ -40,7 +48,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RequestComponent,
     HelpComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
   ],
 })
 export class LayoutModule {}
