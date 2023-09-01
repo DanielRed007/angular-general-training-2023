@@ -1,40 +1,84 @@
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="outline">
-    <mat-label for="select1">Select Option 1:</mat-label>
-    <mat-select id="select1" formControlName="selectOption1">
-      <mat-option value="option1">Option 1</mat-option>
-      <mat-option value="option2">Option 2</mat-option>
-    </mat-select>
-  </mat-form-field>
+<div class="request-grid-container">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 
-  <mat-form-field appearance="outline">
-    <mat-label for="select2">Select Option 2:</mat-label>
-    <mat-select id="select2" formControlName="selectOption2">
-      <mat-option value="optionA">Option A</mat-option>
-      <mat-option value="optionB">Option B</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-grid-list cols="3" #grid>
 
-  <mat-form-field appearance="outline">
-    <mat-label for="inputField1">String Field 1:</mat-label>
-    <input matInput type="text" id="inputField1" formControlName="stringField1">
-  </mat-form-field>
+      <mat-grid-tile>
 
-  <mat-form-field appearance="outline">
-    <mat-label for="inputField2">String Field 2:</mat-label>
-    <input matInput type="text" id="inputField2" formControlName="stringField2">
-  </mat-form-field>
+        <div class="block-form-fields">
 
-  <mat-form-field appearance="outline">
-    <mat-label for="numericField">Numeric Integer Field:</mat-label>
-    <input matInput type="number" id="numericField" formControlName="numericIntegerField">
-  </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label for="select1">Origin :</mat-label>
+            <mat-select id="select1" formControlName="origin">
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label for="select1">Destination :</mat-label>
+            <mat-select id="select1" formControlName="destination">
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label for="inputField1">Akkadian ID:</mat-label>
+            <input matInput type="text" id="inputField1" formControlName="akkadianId">
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label for="inputField2">Gender :</mat-label>
+            <input matInput type="text" id="inputField2" formControlName="gender">
+          </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label for="currencyField">Currency Field:</mat-label>
-    <input matInput type="number" id="currencyField" formControlName="currencyField">
-    <span matPrefix>$</span>
-  </mat-form-field>
+        </div>
 
-  <button mat-raised-button type="submit">Submit</button>
-</form>
+      </mat-grid-tile>
+      
+      <mat-grid-tile>
+
+        <div class="block-form-fields">
+  
+          <mat-form-field appearance="outline">
+            <mat-label for="select1">Race :</mat-label>
+            <mat-select id="select1" formControlName="race">
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label for="inputField2">Birthday :</mat-label>
+            <input matInput type="text" id="inputField2" formControlName="birthday">
+          </mat-form-field>
+
+        </div>
+
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+
+        <div class="block-form-fields">
+  
+          <mat-form-field appearance="outline">
+            <mat-label for="inputField2">Birthday :</mat-label>
+            <input matInput type="text" id="inputField2" formControlName="birthday">
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label for="inputField2">Birthday :</mat-label>
+            <input matInput type="text" id="inputField2" formControlName="birthday">
+          </mat-form-field>
+
+          <button mat-raised-button type="submit">Submit</button>
+        </div>
+
+      </mat-grid-tile>
+
+    </mat-grid-list>
+
+  </form>
+
+</div>
