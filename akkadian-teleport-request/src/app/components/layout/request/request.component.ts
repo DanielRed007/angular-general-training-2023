@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -12,12 +12,12 @@ export class RequestComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.myForm = this.fb.group({
-      selectOption1: ['', Validators.required],
-      selectOption2: ['', Validators.required],
-      stringField1: ['', Validators.required],
-      stringField2: ['', Validators.required],
-      numericIntegerField: ['', Validators.required],
-      currencyField: ['', Validators.required],
+      origin: ['', Validators.required],
+      destination: ['', Validators.required],
+      akkadianId: ['', Validators.required],
+      gender: ['', Validators.required],
+      race: ['', Validators.required],
+      birthday: ['', Validators.required],
     });
   }
 

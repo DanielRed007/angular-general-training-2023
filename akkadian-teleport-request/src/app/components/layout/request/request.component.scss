@@ -1,21 +1,12 @@
 
-// .centered-grid {
-//     margin: 0 auto; /* Horizontally center the grid */
-//     max-width: 800px; /* Adjust the max-width as needed */
-//     width: 100%; /* Ensure the grid expands to the available width */
-//   }
-
-.request-form-container{
-  margin: 0 auto;
+.request-grid-container{
+  // background-color: yellow;
   width: 70%;
-  height: 450px;
-  background-color: white;
+  margin: 0 auto;
 
-  .form-block{
-    width: 100%;
-    height: 100%;
-    background-color: yellow;
+  .block-form-fields{
+    display: flex;
+    flex-direction: column;
   }
 }
 
-  
