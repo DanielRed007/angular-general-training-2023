@@ -1,12 +1,16 @@
 
-.request-grid-container{
-  // background-color: yellow;
+.request-stepper-container{
   width: 70%;
   margin: 0 auto;
-
-  .block-form-fields{
+  
+  .akkadian-form-block{
+    padding-top: 1rem;
+    margin-top: 0.5rem;
     display: flex;
-    flex-direction: column;
+    justify-content: left;
+
+    .akkadian-form-field{
+      padding: 0 1rem;
+    }
   }
 }
-

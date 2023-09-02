@@ -1,84 +1,71 @@
-<div class="request-grid-container">
-  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<div class="request-stepper-container">
+  <mat-stepper orientation="horizontal" [linear]="true" #stepper>
+    <mat-step [stepControl]="personalInfo">
 
-    <mat-grid-list cols="3" #grid>
-
-      <mat-grid-tile>
-
-        <div class="block-form-fields">
-
-          <mat-form-field appearance="outline">
-            <mat-label for="select1">Origin :</mat-label>
-            <mat-select id="select1" formControlName="origin">
-              <mat-option value="option1">Option 1</mat-option>
-              <mat-option value="option2">Option 2</mat-option>
-            </mat-select>
-          </mat-form-field>
-  
-          <mat-form-field appearance="outline">
-            <mat-label for="select1">Destination :</mat-label>
-            <mat-select id="select1" formControlName="destination">
-              <mat-option value="option1">Option 1</mat-option>
-              <mat-option value="option2">Option 2</mat-option>
-            </mat-select>
-          </mat-form-field>
-  
-          <mat-form-field appearance="outline">
-            <mat-label for="inputField1">Akkadian ID:</mat-label>
-            <input matInput type="text" id="inputField1" formControlName="akkadianId">
-          </mat-form-field>
+      <form [formGroup]="personalInfo">
+        <ng-template matStepLabel>Personal Information</ng-template>
         
-          <mat-form-field appearance="outline">
-            <mat-label for="inputField2">Gender :</mat-label>
-            <input matInput type="text" id="inputField2" formControlName="gender">
+        <div class="akkadian-form-block">
+
+          <mat-form-field appearance="outline" class="akkadian-form-field">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Last name, First name" formControlName="name" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="akkadian-form-field">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last name, First name" formControlName="lastname" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="akkadian-form-field">
+            <mat-label>Akkadian Id</mat-label>
+            <input matInput placeholder="Last name, First name" formControlName="akkadianId" required>
           </mat-form-field>
 
         </div>
 
-      </mat-grid-tile>
-      
-      <mat-grid-tile>
+        <div class="akkadian-form-block">
 
-        <div class="block-form-fields">
-  
-          <mat-form-field appearance="outline">
-            <mat-label for="select1">Race :</mat-label>
-            <mat-select id="select1" formControlName="race">
-              <mat-option value="option1">Option 1</mat-option>
-              <mat-option value="option2">Option 2</mat-option>
-            </mat-select>
+          <mat-form-field appearance="outline" class="akkadian-form-field">
+            <mat-label>Passport Number</mat-label>
+            <input matInput placeholder="Last name, First name" formControlName="passportNumber" required>
           </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label for="inputField2">Birthday :</mat-label>
-            <input matInput type="text" id="inputField2" formControlName="birthday">
+          <mat-form-field appearance="outline" class="akkadian-form-field">
+            <mat-label>Planet of Origin</mat-label>
+            <input matInput placeholder="Last name, First name" formControlName="planetOrigin" required>
           </mat-form-field>
 
         </div>
 
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-
-        <div class="block-form-fields">
-  
-          <mat-form-field appearance="outline">
-            <mat-label for="inputField2">Birthday :</mat-label>
-            <input matInput type="text" id="inputField2" formControlName="birthday">
-          </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
         
-          <mat-form-field appearance="outline">
-            <mat-label for="inputField2">Birthday :</mat-label>
-            <input matInput type="text" id="inputField2" formControlName="birthday">
-          </mat-form-field>
+      </form>
+    </mat-step>
 
-          <button mat-raised-button type="submit">Submit</button>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Destination Information</ng-template>
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
         </div>
+      </form>
+    </mat-step>
 
-      </mat-grid-tile>
-
-    </mat-grid-list>
-
-  </form>
-
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
 </div>
