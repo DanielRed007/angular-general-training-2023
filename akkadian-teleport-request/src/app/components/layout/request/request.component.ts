@@ -1,5 +1,5 @@
-import { Component, OnInit, AfterContentInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-request',
@@ -8,27 +8,25 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 
 export class RequestComponent implements OnInit {
-  myForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.myForm = this.fb.group({
-      origin: ['', Validators.required],
-      destination: ['', Validators.required],
-      akkadianId: ['', Validators.required],
-      gender: ['', Validators.required],
-      race: ['', Validators.required],
-      birthday: ['', Validators.required],
-    });
-  }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    if (this.myForm.valid) {
-      // Do something with the form data
-      console.log(this.myForm.value);
-    }
-  }
+  personalInfo = this.fb.group({
+    name  : ['', Validators.required],
+    lastname: ['', Validators.required],
+    akkadianId: ['', Validators.required],
+    passportNumber: ['', Validators.required],
+    planetOrigin: ['', Validators.required]
+  });
 
+  secondFormGroup = this.fb.group({
+    secondCtrl: ['', Validators.required],
+  });
+
+  onSubmit() {
+    console.log("submit!");
+  }
 }

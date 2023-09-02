@@ -16,7 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import {NgFor} from '@angular/common';
+import { MatStepperModule } from '@angular/material/stepper';
+import { NgFor } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import {NgFor} from '@angular/common';
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatStepperModule,
     NgFor
   ],
   declarations: [
@@ -51,4 +53,4 @@ import {NgFor} from '@angular/common';
     HomeComponent,
   ],
 })
-export class LayoutModule {}
+export class LayoutModule { }
