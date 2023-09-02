@@ -17,7 +17,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
-import { NgFor } from '@angular/common';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { NgFor, NgIf } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -34,7 +35,9 @@ import { NgFor } from '@angular/common';
     MatFormFieldModule,
     MatSelectModule,
     MatStepperModule,
-    NgFor
+    MatCheckboxModule,
+    NgFor,
+    NgIf
   ],
   declarations: [
     AkkadianHeaderComponent,

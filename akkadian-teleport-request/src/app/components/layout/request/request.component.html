@@ -39,22 +39,43 @@
         </div>
 
         <div>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
         </div>
         
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
+    <mat-step [stepControl]="destinationInfo">
+      <form [formGroup]="destinationInfo">
         <ng-template matStepLabel>Destination Information</ng-template>
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+
+        <div class="akkadian-form-block">
+
+          <mat-form-field appearance="outline" class="akkadian-form-field">
+            <mat-label>Origin</mat-label>
+            <mat-select formControlName="origin">
+              <mat-option *ngFor="let location of locations" [value]="location.value">
+                {{location.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="akkadian-form-field">
+            <mat-label>Destination</mat-label>
+            <mat-select formControlName="destination">
+              <mat-option *ngFor="let location of locations" [value]="location.value">
+                {{location.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-checkbox class="akkadian-form-field" formControlName="roundTrip">Round Trip</mat-checkbox>
+
+        </div>
+
+        <div class="akkadian-form-block">
+          <button mat-stroked-button class="back-button" color="primary" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
@@ -63,8 +84,8 @@
       <ng-template matStepLabel>Done</ng-template>
       <p>You are now done.</p>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button (click)="stepper.reset()">Reset</button>
       </div>
     </mat-step>
   </mat-stepper>
