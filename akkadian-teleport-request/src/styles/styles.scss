@@ -59,20 +59,24 @@ $akkadian-primary-bg: #ffeb3b;
 $akkadian-primary: mat.define-palette($primary-palette, 500);
 $akkadian-accent: mat.define-palette($accent-palette, 900, 100, 400);
 $akkadian-warn: mat.define-palette(mat.$pink-palette);
+$akkadian-typography: mat.define-typography-config(
+  $font-family: 'Nunito',
+);
 
 $akkadian-dark: mat.define-dark-theme(
   (
-    color: (
+    color:(
       primary: $akkadian-primary,
       accent: $akkadian-accent,
       warn: $akkadian-warn
     ),
-    typography: mat.define-typography-config(),
+    typography: $akkadian-typography,
     density: 0,
   )
 );  
 
 @include mat.all-component-themes($akkadian-dark);
+@include mat.typography-hierarchy($akkadian-typography);
 
 html,
 body {
@@ -87,4 +91,8 @@ body {
 
 .primary-background{
   background-color: $akkadian-primary-bg;
+}
+
+.akkadian-card{
+  background-color: red;
 }

@@ -18,6 +18,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCardModule } from '@angular/material/card';
 import { NgFor, NgIf } from '@angular/common';
 
 @NgModule({
@@ -36,6 +39,9 @@ import { NgFor, NgIf } from '@angular/common';
     MatSelectModule,
     MatStepperModule,
     MatCheckboxModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatCardModule,
     NgFor,
     NgIf
   ],

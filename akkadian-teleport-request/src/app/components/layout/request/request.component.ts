@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-request',
@@ -8,11 +8,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 
 export class RequestComponent implements OnInit {
-
-  constructor(private fb: FormBuilder) {}
+  isRoundTrip: boolean = false;
 
   personalInfo = this.fb.group({
-    name  : ['', Validators.required],
+    name  : new FormControl(),
     lastname: ['', Validators.required],
     akkadianId: ['', Validators.required],
     passportNumber: ['', Validators.required],
@@ -23,7 +22,19 @@ export class RequestComponent implements OnInit {
     origin: ['', Validators.required],
     destination: ['', Validators.required],
     roundTrip: [false, Validators.required],
+    departureDate: ['', Validators.required],
+    returnDate: ['']
   });
+
+  constructor(private fb: FormBuilder) {
+    this.destinationInfo.valueChanges.subscribe(values => {
+      this.formTracker(values);
+    });
+
+    this.personalInfo.valueChanges.subscribe(values => {
+      this.formTracker(values);
+    });
+  }
 
   locations = [
     {value: 'venus', viewValue: 'Venus'},
@@ -41,10 +52,17 @@ export class RequestComponent implements OnInit {
     {value: 'titan', viewValue: 'Titan'},
   ];
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSubmit() {
     console.log("submit!");
+  }
+
+  checkboxChanged(event: any) {
+    this.isRoundTrip = event.checked;
+  }
+
+  formTracker(value: any){
+    console.log(value, "from  outside");
   }
 }
