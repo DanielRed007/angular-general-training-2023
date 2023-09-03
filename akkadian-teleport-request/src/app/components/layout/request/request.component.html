@@ -69,7 +69,27 @@
             </mat-select>
           </mat-form-field>
 
-          <mat-checkbox class="akkadian-form-field" formControlName="roundTrip">Round Trip</mat-checkbox>
+          <mat-checkbox (change)="checkboxChanged($event)" class="akkadian-form-field" formControlName="roundTrip">Round Trip</mat-checkbox>
+
+          <mat-form-field appearance="outline" class="akkadian-form-field">
+            <mat-label>Departure Date</mat-label>
+            <input formControlName="departureDate" matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" *ngIf="isRoundTrip" class="akkadian-form-field">
+            <mat-label>Return Date</mat-label>
+            <input formControlName="returnDate" matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
 
         </div>
 
@@ -82,10 +102,45 @@
 
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <div>
-        <button mat-raised-button matStepperPrevious>Back</button>
-        <button mat-raised-button (click)="stepper.reset()">Reset</button>
+      
+      <div class="akkadian-form-block">
+
+        <mat-card class="akkadian-card">
+
+          <mat-card-header>
+            <mat-card-title class="mat-headline-4">Personal Information</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p class="mat-subtitle-1"><strong>Name:</strong> {{ personalInfo.get('name')?.value }}</p>
+            <p class="mat-subtitle-1"><strong>Last Name:</strong> {{ personalInfo.get('lastname')?.value }}</p>
+            <p class="mat-subtitle-1"><strong>Akkadian ID:</strong> {{ personalInfo.get('akkadianId')?.value }}</p>
+            <p class="mat-subtitle-1"><strong>Passport Number:</strong> {{ personalInfo.get('passportNumber')?.value }}</p>
+            <p class="mat-subtitle-1"><strong>Nationality:</strong> {{ personalInfo.get('planetOrigin')?.value }}</p>
+          </mat-card-content>
+
+        </mat-card>
+
+        <mat-card class="akkadian-card">
+
+          <mat-card-header>
+            <mat-card-title class="mat-headline-4">Destination Information</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p class="mat-subtitle-1"><strong>Origin:</strong> {{ destinationInfo.get('origin')?.value }}</p>
+            <p class="mat-subtitle-1"><strong>Destination:</strong> {{ destinationInfo.get('destination')?.value }}</p>
+            <p class="mat-subtitle-1"><strong>Departure Date:</strong>{{ destinationInfo.get('departureDate')?.value  | date: 'shortDate' }}</p>
+            <p class="mat-subtitle-1"><strong>Return Date:</strong>{{ destinationInfo.get('returnDate')?.value | date: 'shortDate' }}</p>
+          </mat-card-content>
+
+        </mat-card>
+
+      </div>
+      
+      <div class="akkadian-form-block">
+        <button mat-stroked-button class="back-button" color="primary" matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" (click)="stepper.reset()">Reset</button>
       </div>
     </mat-step>
   </mat-stepper>
