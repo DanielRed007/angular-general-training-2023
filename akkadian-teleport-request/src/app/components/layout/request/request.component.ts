@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { RequestService } from "../../../services/request.service";
+import { Request } from 'src/app/interfaces/request';
 
 @Component({
   selector: 'app-request',
@@ -9,6 +11,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 export class RequestComponent implements OnInit {
   isRoundTrip: boolean = false;
+  // request: Request;
 
   personalInfo = this.fb.group({
     name  : new FormControl(),
@@ -26,7 +29,10 @@ export class RequestComponent implements OnInit {
     returnDate: ['']
   });
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private requestService: RequestService,
+  ) {
     this.destinationInfo.valueChanges.subscribe(values => {
       this.formTracker(values);
     });
@@ -52,7 +58,8 @@ export class RequestComponent implements OnInit {
     {value: 'titan', viewValue: 'Titan'},
   ];
 
-  ngOnInit() {}
+  ngOnInit(){
+  }
 
   onSubmit() {
     console.log("submit!");
@@ -64,5 +71,12 @@ export class RequestComponent implements OnInit {
 
   formTracker(value: any){
     console.log(value, "from  outside");
+  }
+
+  submitTransfer(){
+    this.requestService.getSubmittedRequest({
+      ...this.personalInfo.value,
+      ...this.destinationInfo.value
+    });
   }
 }
