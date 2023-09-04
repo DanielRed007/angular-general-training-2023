@@ -140,7 +140,8 @@
       
       <div class="akkadian-form-block">
         <button mat-stroked-button class="back-button" color="primary" matStepperPrevious>Back</button>
-        <button mat-raised-button color="primary" (click)="stepper.reset()">Reset</button>
+        <button mat-raised-button class="back-button" color="primary" (click)="stepper.reset()">Reset</button>
+        <button mat-raised-button color="primary" (click)="submitTransfer()">Submit</button>
       </div>
     </mat-step>
   </mat-stepper>

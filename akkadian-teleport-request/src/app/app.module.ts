@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { LayoutModule } from './components/layout/layout.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RequestService } from './services/request.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSlideToggleModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{provide: RequestService, useClass: RequestService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
