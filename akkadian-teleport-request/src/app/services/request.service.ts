@@ -21,6 +21,7 @@ export class RequestService {
   }
 
   setPersonalInfo(latestValue: PersonalInfo){
+    console.log(latestValue, "val");
     return this.personalInfo.next(latestValue);
   }
 }

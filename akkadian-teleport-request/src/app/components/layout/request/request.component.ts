@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RequestService } from "../../../services/request.service";
 import { Request } from 'src/app/interfaces/request';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-request',
@@ -12,6 +13,7 @@ import { Request } from 'src/app/interfaces/request';
 export class RequestComponent implements OnInit {
   isRoundTrip: boolean = false;
   personalInfo: any;
+  subscription: any;
 
   destinationInfo = this.fb.group({
     origin: ['', Validators.required],
@@ -44,7 +46,7 @@ export class RequestComponent implements OnInit {
   ];
 
   ngOnInit(){
-    this.requestService._personalInfo$.subscribe(info => {
+    this.subscription = this.requestService._personalInfo$.subscribe(info => {
       this.setForms(info);
     });
   }
@@ -74,5 +76,9 @@ export class RequestComponent implements OnInit {
   submitTransfer(){
     const info = this.personalInfo.value
     this.requestService.setPersonalInfo(info)
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 }
