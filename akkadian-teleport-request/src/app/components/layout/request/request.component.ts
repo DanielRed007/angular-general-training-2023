@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RequestService } from "../../../services/request.service";
 import { Request } from 'src/app/interfaces/request';
 
@@ -11,15 +11,7 @@ import { Request } from 'src/app/interfaces/request';
 
 export class RequestComponent implements OnInit {
   isRoundTrip: boolean = false;
-  // request: Request;
-
-  personalInfo = this.fb.group({
-    name  : new FormControl(),
-    lastname: ['', Validators.required],
-    akkadianId: ['', Validators.required],
-    passportNumber: ['', Validators.required],
-    planetOrigin: ['', Validators.required]
-  });
+  personalInfo: any;
 
   destinationInfo = this.fb.group({
     origin: ['', Validators.required],
@@ -32,15 +24,8 @@ export class RequestComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private requestService: RequestService,
-  ) {
-    this.destinationInfo.valueChanges.subscribe(values => {
-      this.formTracker(values);
-    });
 
-    this.personalInfo.valueChanges.subscribe(values => {
-      this.formTracker(values);
-    });
-  }
+  ) {}
 
   locations = [
     {value: 'venus', viewValue: 'Venus'},
@@ -59,6 +44,19 @@ export class RequestComponent implements OnInit {
   ];
 
   ngOnInit(){
+    this.requestService._personalInfo$.subscribe(info => {
+      this.setForms(info);
+    });
+  }
+
+  setForms(info: any){
+    this.personalInfo = this.fb.group({
+      name  : [info.name, Validators.required],
+      lastname: [info.lastname, Validators.required],
+      akkadianId: [info.akkadianId, Validators.required],
+      passportNumber: [info.akkadianId, Validators.required],
+      planetOrigin: [info.planetOrigin, Validators.required]
+    });
   }
 
   onSubmit() {
@@ -74,9 +72,7 @@ export class RequestComponent implements OnInit {
   }
 
   submitTransfer(){
-    this.requestService.getSubmittedRequest({
-      ...this.personalInfo.value,
-      ...this.destinationInfo.value
-    });
+    const info = this.personalInfo.value
+    this.requestService.setPersonalInfo(info)
   }
 }

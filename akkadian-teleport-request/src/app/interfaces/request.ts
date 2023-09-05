@@ -11,3 +11,11 @@ export interface Request{
     departureDate: any;
     returnDate?: any;
 }
+
+export interface PersonalInfo{
+    name: string;
+    lastname: string;
+    akkadianId: string;
+    passportNumber: string;
+    planetOrigin: string;
+}
