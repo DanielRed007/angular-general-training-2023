@@ -1,30 +1,26 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Request } from "../interfaces/request";
+import { BehaviorSubject, Observable } from 'rxjs';
+import { PersonalInfo, Request } from "../interfaces/request";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestService {
-  private request = new BehaviorSubject<Request>({
+  private personalInfo = new BehaviorSubject<PersonalInfo>({
     name: "",
     lastname: "",
     akkadianId: "",
     passportNumber: "",
-    planetOrigin: "",
-    origin: "",
-    destination: "",
-    roundTrip: false,
-    departureDate: null,
-    returnDate: null
+    planetOrigin: ""
   });
 
-  $request = this.request.asObservable();
+  _personalInfo$ = this.personalInfo.asObservable();
 
-  constructor() { }
+  getPersonalInfo(): Observable<PersonalInfo>{
+    return this._personalInfo$;
+  }
 
-  getSubmittedRequest(user:any){
-    console.log(user);
-    this.request.next(user);
+  setPersonalInfo(latestValue: PersonalInfo){
+    return this.personalInfo.next(latestValue);
   }
 }
