@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { RequestService } from "../../../services/request.service";
-import { Request } from 'src/app/interfaces/request';
+import { PersonalInfo, DestinationInfo } from 'src/app/interfaces/request';
+import { Subscription } from 'rxjs';
+import { locations } from 'src/app/mock/mock.data';
 
 @Component({
   selector: 'app-request',
@@ -12,50 +14,43 @@ import { Request } from 'src/app/interfaces/request';
 export class RequestComponent implements OnInit {
   isRoundTrip: boolean = false;
   personalInfo: any;
-
-  destinationInfo = this.fb.group({
-    origin: ['', Validators.required],
-    destination: ['', Validators.required],
-    roundTrip: [false, Validators.required],
-    departureDate: ['', Validators.required],
-    returnDate: ['']
-  });
+  destinationInfo: any;
+  personalSubscription: Subscription = new Subscription();
+  destinationSubscription: Subscription = new Subscription();
+  locations = locations; 
 
   constructor(
     private fb: FormBuilder,
-    private requestService: RequestService,
-
+    private requestService: RequestService
   ) {}
 
-  locations = [
-    {value: 'venus', viewValue: 'Venus'},
-    {value: 'mercury', viewValue: 'Mercury'},
-    {value: 'earth', viewValue: 'Earth'},
-    {value: 'mars', viewValue: 'Mars'},
-    {value: 'jupiter', viewValue: 'Jupiter'},
-    {value: 'saturn', viewValue: 'Saturn'},
-    {value: 'uranus', viewValue: 'Uranus'},
-    {value: 'pluto', viewValue: 'Pluto'},
-    {value: 'moon', viewValue: 'Moon'},
-    {value: 'europe', viewValue: 'Europe'},
-    {value: 'ganimedes', viewValue: 'Ganimedes'},
-    {value: 'enceladus', viewValue: 'Enceladus'},
-    {value: 'titan', viewValue: 'Titan'},
-  ];
-
   ngOnInit(){
-    this.requestService._personalInfo$.subscribe(info => {
-      this.setForms(info);
+    this.personalSubscription = this.requestService._personalInfo$.subscribe(info => {
+      this.setPersonalInfo(info);
+    });
+
+    this.destinationSubscription = this.requestService._destinationInfo$.subscribe(destination => {
+      this.setDestinationInfo(destination);
     });
   }
 
-  setForms(info: any){
+  setPersonalInfo(personal: PersonalInfo){
     this.personalInfo = this.fb.group({
-      name  : [info.name, Validators.required],
-      lastname: [info.lastname, Validators.required],
-      akkadianId: [info.akkadianId, Validators.required],
-      passportNumber: [info.akkadianId, Validators.required],
-      planetOrigin: [info.planetOrigin, Validators.required]
+      name  : [personal.name, Validators.required],
+      lastname: [personal.lastname, Validators.required],
+      akkadianId: [personal.akkadianId, Validators.required],
+      passportNumber: [personal.akkadianId, Validators.required],
+      planetOrigin: [personal.planetOrigin, Validators.required]
+    });
+  }
+
+  setDestinationInfo(destination: DestinationInfo){
+    this.destinationInfo = this.fb.group({
+      origin: [destination.origin, Validators.required],
+      destination: [destination.destination, Validators.required],
+      roundTrip: [destination.roundTrip, Validators.required],
+      departureDate: [destination.departureDate, Validators.required],
+      returnDate: [destination.returnDate]
     });
   }
 
@@ -72,7 +67,15 @@ export class RequestComponent implements OnInit {
   }
 
   submitTransfer(){
-    const info = this.personalInfo.value
-    this.requestService.setPersonalInfo(info)
+    const personal = this.personalInfo.value;
+    const destination = this.destinationInfo.value;
+
+    this.requestService.setPersonalInfo(personal);
+    this.requestService.setDestinationInfo(destination);
+  }
+
+  ngOnDestroy(){
+    this.personalSubscription.unsubscribe();
+    this.destinationSubscription.unsubscribe();
   }
 }

@@ -21,7 +21,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { NgFor, NgIf } from '@angular/common';
+import { RequestListComponent } from '../request-list/request-list.component';
 
 @NgModule({
   imports: [
@@ -42,6 +44,7 @@ import { NgFor, NgIf } from '@angular/common';
     MatNativeDateModule,
     MatDatepickerModule,
     MatCardModule,
+    MatProgressBarModule,
     NgFor,
     NgIf
   ],
@@ -49,6 +52,7 @@ import { NgFor, NgIf } from '@angular/common';
     AkkadianHeaderComponent,
     LayoutComponent,
     RequestComponent,
+    RequestListComponent,
     HelpComponent,
     AboutComponent,
     HomeComponent,
@@ -57,6 +61,7 @@ import { NgFor, NgIf } from '@angular/common';
     AkkadianHeaderComponent,
     LayoutComponent,
     RequestComponent,
+    RequestListComponent,
     HelpComponent,
     AboutComponent,
     HomeComponent,

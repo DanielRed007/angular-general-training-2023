@@ -19,3 +19,11 @@ export interface PersonalInfo{
     passportNumber: string;
     planetOrigin: string;
 }
+
+export interface DestinationInfo{
+    origin: string,
+    destination: string,
+    roundTrip: string,
+    departureDate: string,
+    returnDate: string
+}

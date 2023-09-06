@@ -1,0 +1,11 @@
+
+.request-list-container{
+    position: absolute;
+    right: 2rem;
+    top: 20%;
+    width: 20%;
+
+    .request-card-container{
+        z-index: 2000;
+    }
+}
