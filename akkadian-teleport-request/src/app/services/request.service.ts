@@ -6,7 +6,7 @@ import { PersonalInfo, DestinationInfo, Request } from "../interfaces/request";
   providedIn: 'root'
 })
 export class RequestService {
-  private personalInfo: BehaviorSubject<PersonalInfo> = new BehaviorSubject({
+  private personalInfo: BehaviorSubject<PersonalInfo> = new BehaviorSubject<PersonalInfo>({
     name: "",
     lastname: "",
     akkadianId: "",
@@ -14,7 +14,7 @@ export class RequestService {
     planetOrigin: ""
   });
 
-  private destinationInfo: BehaviorSubject<DestinationInfo>  = new BehaviorSubject({
+  private destinationInfo: BehaviorSubject<DestinationInfo>  = new BehaviorSubject<DestinationInfo>({
     origin: "",
     destination: "",
     roundTrip: "",
@@ -22,11 +22,11 @@ export class RequestService {
     returnDate: ""
   });
 
-  private requestList: BehaviorSubject<any[]> = new BehaviorSubject([{}]);
+  private requestList: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
   _personalInfo$ = this.personalInfo.asObservable();
   _destinationInfo$ = this.destinationInfo.asObservable();
-  _resquestList$ = this.requestList.asObservable();
+  _requestList$ = this.requestList.asObservable();
 
   getPersonalInfo(): Observable<PersonalInfo>{
     return this._personalInfo$;
@@ -36,13 +36,19 @@ export class RequestService {
     return this._destinationInfo$;
   }
 
+  getNewRequest(){
+    return this._requestList$;
+  }
+
   setPersonalInfo(latestValue: PersonalInfo){
-    console.log(latestValue, "personal");
     return this.personalInfo.next(latestValue);
   }
 
   setDestinationInfo(latestValue: DestinationInfo){
-    console.log(latestValue, "destination");
     return this.destinationInfo.next(latestValue);
+  }
+
+  setNewRequest(latestValue: Request[]){
+    this.requestList.next(latestValue);
   }
 }
