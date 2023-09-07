@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { RequestService } from "../../../services/request.service";
 import { PersonalInfo, DestinationInfo } from 'src/app/interfaces/request';
@@ -17,7 +17,20 @@ export class RequestComponent implements OnInit {
   destinationInfo: any;
   personalSubscription: Subscription = new Subscription();
   destinationSubscription: Subscription = new Subscription();
-  locations = locations; 
+  locations = locations;
+  @Output() newRequest = new EventEmitter<void>();
+  request = {
+    name: "",
+    lastname: "",
+    akkadianId: "",
+    passportNumber: "",
+    planetOrigin: "",
+    origin: "",
+    destination: "",
+    roundTrip: false,
+    departureDate: null,
+    returnDate: null,
+  } 
 
   constructor(
     private fb: FormBuilder,
@@ -70,6 +83,7 @@ export class RequestComponent implements OnInit {
     const personal = this.personalInfo.value;
     const destination = this.destinationInfo.value;
 
+    this.requestService.setNewRequest({...personal, ...destination});
     this.requestService.setPersonalInfo(personal);
     this.requestService.setDestinationInfo(destination);
   }
