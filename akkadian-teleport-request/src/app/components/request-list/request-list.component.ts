@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { RequestService } from 'src/app/services/request.service';
 
 @Component({
@@ -8,14 +8,15 @@ import { RequestService } from 'src/app/services/request.service';
   styleUrls: ['./request-list.component.scss']
 })
 export class RequestListComponent implements OnInit{
-  requestList: Request[] = [];
+  requestList: any = [];
   personalSubscription: Subscription = new Subscription();
 
-  constructor(private requestService: RequestService){}
+  constructor(private requestService: RequestService){
+  }
 
   ngOnInit(): void {
-    this.requestService.getNewRequest().subscribe(request => {
-      this.requestList.push(...request);
+    this.requestService.getNewRequest().subscribe((request) => {
+      this.requestList.push(request);
     })
   }
 }
