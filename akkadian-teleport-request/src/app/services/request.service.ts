@@ -36,7 +36,7 @@ export class RequestService {
     return this._destinationInfo$;
   }
 
-  getNewRequest(){
+  getNewRequest(): Observable<any>{
     return this._requestList$;
   }
 
