@@ -4,6 +4,8 @@ import { RequestService } from "../../../services/request.service";
 import { PersonalInfo, DestinationInfo } from 'src/app/interfaces/request';
 import { Subscription } from 'rxjs';
 import { locations } from 'src/app/mock/mock.data';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-request',
@@ -34,8 +36,11 @@ export class RequestComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private requestService: RequestService
-  ) {}
+    private requestService: RequestService,
+    public dialog: MatDialog
+  ) {
+    
+  }
 
   ngOnInit(){
     this.personalSubscription = this.requestService._personalInfo$.subscribe(info => {
@@ -44,6 +49,14 @@ export class RequestComponent implements OnInit {
 
     this.destinationSubscription = this.requestService._destinationInfo$.subscribe(destination => {
       this.setDestinationInfo(destination);
+    });
+  }
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(ConfirmDialogComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
     });
   }
 

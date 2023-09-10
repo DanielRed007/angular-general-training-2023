@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AkkadianHeaderComponent } from './akkadian-header/akkadian-header.component';
+import { RequestListComponent } from '../request-list/request-list.component';
 import { LayoutComponent } from './layout/layout.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,7 +24,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { NgFor, NgIf } from '@angular/common';
-import { RequestListComponent } from '../request-list/request-list.component';
+import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -45,6 +46,7 @@ import { RequestListComponent } from '../request-list/request-list.component';
     MatDatepickerModule,
     MatCardModule,
     MatProgressBarModule,
+    MatDialogModule,
     NgFor,
     NgIf
   ],
