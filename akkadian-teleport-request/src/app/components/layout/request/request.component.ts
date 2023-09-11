@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { locations } from 'src/app/mock/mock.data';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-request',
@@ -37,7 +38,8 @@ export class RequestComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private requestService: RequestService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {
     
   }
@@ -53,10 +55,22 @@ export class RequestComponent implements OnInit {
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(ConfirmDialogComponent, {
-      width: '250px',
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '450px',
       enterAnimationDuration,
       exitAnimationDuration,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && result.action === 'ok') {
+        this.submitTransfer();
+        this.router.navigate([""]);
+      } else if (result && result.action === 'cancel') {
+        console.log('Cancel button was clicked');
+      }
+
+      this.personalInfo.reset();
+      this.destinationInfo.reset();
     });
   }
 
