@@ -15,8 +15,8 @@ export class RequestListComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.requestService.getNewRequest().subscribe((request) => {
-      this.requestList.push(request);
+    this.requestService._requestList$.subscribe(list => {
+      console.log(list, "list");
     })
   }
 }
