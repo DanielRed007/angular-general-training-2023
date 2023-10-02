@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AkkadianHeaderComponent } from './akkadian-header/akkadian-header.component';
-import { RequestListComponent } from '../request-list/request-list.component';
+import { RequestListComponent } from './request-list/request-list.component';
 import { LayoutComponent } from './layout/layout.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';

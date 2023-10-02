@@ -8,15 +8,18 @@ import { RequestService } from 'src/app/services/request.service';
   styleUrls: ['./request-list.component.scss']
 })
 export class RequestListComponent implements OnInit{
-  requestList: any = [];
+  requestList: any[] = [];
   personalSubscription: Subscription = new Subscription();
+  showList = this.requestList.length > 0;
 
   constructor(private requestService: RequestService){
   }
 
   ngOnInit(): void {
-    this.requestService._requestList$.subscribe(list => {
-      console.log(list, "list");
-    })
+    this.requestService.getNewRequest().subscribe(req => {
+      console.log({request: req});
+      this.requestList.push(req);
+    });
   }
+  
 }
