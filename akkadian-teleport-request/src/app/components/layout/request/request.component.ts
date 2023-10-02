@@ -61,16 +61,18 @@ export class RequestComponent implements OnInit {
       exitAnimationDuration,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result && result.action === 'ok') {
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      console.log({dialogResult});
+      if (dialogResult && dialogResult.action === 'ok') {
         this.submitTransfer();
         this.router.navigate([""]);
-      } else if (result && result.action === 'cancel') {
+
+        this.personalInfo.reset();
+        this.destinationInfo.reset();
+      } else if (dialogResult && dialogResult.action === 'cancel') {
         console.log('Cancel button was clicked');
       }
 
-      this.personalInfo.reset();
-      this.destinationInfo.reset();
     });
   }
 
@@ -111,8 +113,6 @@ export class RequestComponent implements OnInit {
     const destination = this.destinationInfo.value;
 
     this.requestService.setNewRequest({...personal, ...destination});
-    this.requestService.setPersonalInfo(personal);
-    this.requestService.setDestinationInfo(destination);
   }
 
   ngOnDestroy(){

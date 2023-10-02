@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, combineLatest, map } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, combineLatest, map } from 'rxjs';
 import { PersonalInfo, DestinationInfo, Request } from "../interfaces/request";
 
 @Injectable({
@@ -22,7 +22,7 @@ export class RequestService {
     returnDate: ""
   });
 
-  private requestList: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  private requestList: Subject<any[]> = new Subject<any>();
 
   _personalInfo$ = this.personalInfo.asObservable();
   _destinationInfo$ = this.destinationInfo.asObservable();
