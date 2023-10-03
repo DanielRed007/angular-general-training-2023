@@ -7,6 +7,7 @@ import { locations } from 'src/app/mock/mock.data';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { patternValidator } from 'src/app/util/number.validators';
 
 @Component({
   selector: 'app-request',
@@ -81,7 +82,7 @@ export class RequestComponent implements OnInit {
       name  : [personal.name, Validators.required],
       lastname: [personal.lastname, Validators.required],
       akkadianId: [personal.akkadianId, Validators.required],
-      passportNumber: [personal.akkadianId, Validators.required],
+      passportNumber: [personal.akkadianId, [Validators.required, patternValidator]],
       planetOrigin: [personal.planetOrigin, Validators.required]
     });
   }
