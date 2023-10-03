@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { RequestService } from 'src/app/services/request.service';
 
@@ -7,7 +7,7 @@ import { RequestService } from 'src/app/services/request.service';
   templateUrl: './request-list.component.html',
   styleUrls: ['./request-list.component.scss']
 })
-export class RequestListComponent implements OnInit{
+export class RequestListComponent implements OnInit, OnDestroy {
   requestList: any[] = [];
   personalSubscription: Subscription = new Subscription();
   showList = this.requestList.length > 0;
@@ -22,4 +22,7 @@ export class RequestListComponent implements OnInit{
     });
   }
   
+  ngOnDestroy(): void {
+    this.personalSubscription.unsubscribe();
+  }
 }

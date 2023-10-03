@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RequestService } from './services/request.service';
+import { PassportNumberPipe } from './pipes/passport-number.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PassportNumberPipe
   ],
   imports: [
     BrowserModule,
