@@ -11,6 +11,7 @@ export class RequestListComponent implements OnInit, OnDestroy {
   requestList: any[] = [];
   personalSubscription: Subscription = new Subscription();
   showList = this.requestList.length > 0;
+  loading: boolean = false;
 
   constructor(private requestService: RequestService){
   }
@@ -20,6 +21,16 @@ export class RequestListComponent implements OnInit, OnDestroy {
       console.log({request: req});
       this.requestList.push(req);
     });
+  }
+
+  emptyRequestList(): void{
+    this.loading = true;
+    
+    setTimeout(() => {
+      this.requestList = [];
+      this.loading = false;
+      this.requestService.deleteRequestList();
+    },5000)
   }
   
   ngOnDestroy(): void {

@@ -1,10 +1,11 @@
 
-<div class="request-list-container">
-    
+<div class="request-list-container" >
     <div *ngIf="requestList.length > 0">
+        <mat-spinner *ngIf="loading"></mat-spinner>
+
         <div>
-            <button mat-raised-button color="accent">LIKE</button>
-            <button mat-raised-button color="accent">SHARE</button>
+            <button mat-stroked-button color="primary" (click)="emptyRequestList()">Delete List</button>
+            <button mat-stroked-button color="primary">Primary</button>
         </div>
 
         <div *ngFor="let item of requestList">
@@ -14,10 +15,10 @@
                 </mat-card-header>
                 <mat-card-content>
                     <mat-card-subtitle>{{"AK-ID : " | uppercase }} {{ item.akkadianId }}</mat-card-subtitle>
-                    <mat-card-subtitle>{{"Passenger Name : " | uppercase }} {{ item.name }} {{ item.lastname }}</mat-card-subtitle>
+                    <mat-card-subtitle>{{"Passenger: " | uppercase }} {{ item.name }} {{ item.lastname }}</mat-card-subtitle>
                     <mat-divider></mat-divider>
-                    <mat-card-subtitle>{{"Passport Number : " | uppercase }} {{ item.passportNumber }}</mat-card-subtitle>
-                    <mat-card-subtitle>{{"Planet Of Origin : " | uppercase }} {{ item.planetOrigin }}</mat-card-subtitle>
+                    <mat-card-subtitle>{{"Passport #: " | uppercase }} {{ item.passportNumber }}</mat-card-subtitle>
+                    <mat-card-subtitle>{{"Origin : " | uppercase }} {{ item.planetOrigin }}</mat-card-subtitle>
                     <mat-divider></mat-divider>
                 </mat-card-content>
                 <mat-card-actions>
@@ -29,5 +30,4 @@
             </mat-card>
         </div>
     </div>
-
 </div>
