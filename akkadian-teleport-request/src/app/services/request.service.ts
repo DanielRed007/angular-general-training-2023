@@ -22,7 +22,7 @@ export class RequestService {
     returnDate: ""
   });
 
-  private requestList: Subject<any[]> = new Subject<any>();
+  private requestList: Subject<any[]> = new Subject<any[]>();
 
   _personalInfo$ = this.personalInfo.asObservable();
   _destinationInfo$ = this.destinationInfo.asObservable();
@@ -50,5 +50,9 @@ export class RequestService {
 
   setNewRequest(latestValue: Request[]){
     this.requestList.next(latestValue);
+  }
+
+  deleteRequestList(){
+    this.requestList.unsubscribe();
   }
 }

@@ -22,9 +22,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgFor, NgIf } from '@angular/common';
-import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog
     MatCardModule,
     MatProgressBarModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     NgFor,
     NgIf
   ],
