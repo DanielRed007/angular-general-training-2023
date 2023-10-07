@@ -7,6 +7,7 @@ import { RequestComponent } from './request/request.component';
 import { HelpComponent } from './help/help.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
+import { FlightComponent } from './flight/flight.component';
 
 const layoutRoutes: Routes = [
     { path: "", 
@@ -27,6 +28,10 @@ const layoutRoutes: Routes = [
             {
                 path: "about", 
                 component: AboutComponent
+            },
+            {
+                path: "flights", 
+                component: HomeComponent
             }
         ] 
     }
