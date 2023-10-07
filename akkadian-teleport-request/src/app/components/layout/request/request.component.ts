@@ -70,11 +70,12 @@ export class RequestComponent implements OnInit {
 
         this.personalInfo.reset();
         this.destinationInfo.reset();
+        dialogRef.close();
       } else if (dialogResult && dialogResult.action === 'cancel') {
         console.log('Cancel button was clicked');
       }
 
-    });
+    })
   }
 
   setPersonalInfo(personal: PersonalInfo){
