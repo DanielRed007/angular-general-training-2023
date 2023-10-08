@@ -7,6 +7,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RequestService } from './services/request.service';
 import { PassportNumberPipe } from './pipes/passport-number.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 
 @NgModule({
@@ -18,9 +20,10 @@ import { PassportNumberPipe } from './pipes/passport-number.pipe';
     BrowserModule,
     AppRoutingModule,
     MatSlideToggleModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [{ provide: RequestService, useClass: RequestService }],
+  providers: [{ provide: RequestService, useClass: RequestService }, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
