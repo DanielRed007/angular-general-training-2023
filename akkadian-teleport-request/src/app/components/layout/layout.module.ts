@@ -28,6 +28,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgFor, NgIf } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatProgressBarModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatTableModule,
     NgFor,
     NgIf
   ],

@@ -31,7 +31,7 @@ const layoutRoutes: Routes = [
             },
             {
                 path: "flights", 
-                component: HomeComponent
+                component: FlightComponent
             }
         ] 
     }
