@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, combineLatest, map } from 'rxjs';
 import { PersonalInfo, DestinationInfo, Request } from "../interfaces/request";
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestService {
+  private requestsUrl = 'assets/mock/requests.json';
   private personalInfo: BehaviorSubject<PersonalInfo> = new BehaviorSubject<PersonalInfo>({
     name: "",
     lastname: "",
@@ -28,6 +30,12 @@ export class RequestService {
   _destinationInfo$ = this.destinationInfo.asObservable();
   _requestList$ = this.requestList.asObservable();
 
+  constructor(private http: HttpClient) {}
+
+  getRequests(): Observable<Request[]> {
+    return this.http.get<Request[]>(this.requestsUrl);
+  }
+
   getPersonalInfo(): Observable<PersonalInfo>{
     return this._personalInfo$;
   }
@@ -49,6 +57,7 @@ export class RequestService {
   }
 
   setNewRequest(latestValue: Request[]){
+    console.log({latestValue})
     this.requestList.next(latestValue);
   }
 

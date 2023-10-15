@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Dan",
+        "lastname": "Oli",
+        "akkadianId": "ASDASD",
+        "passportNumber": "AWA-2324KJ-FDS",
+        "planetOrigin": "Enceladus",
+        "origin": "mars",
+        "destination": "mars",
+        "roundTrip": true,
+        "departureDate": "2023-10-25T23:00:00.000Z",
+        "returnDate": "2023-10-31T00:00:00.000Z"
+    },
+    {
+        "name": "John",
+        "lastname": "Doe",
+        "akkadianId": "QWEQWE",
+        "passportNumber": "XYZ-1234AB-CDE",
+        "planetOrigin": "Mars",
+        "origin": "earth",
+        "destination": "earth",
+        "roundTrip": false,
+        "departureDate": "2023-11-15T14:30:00.000Z",
+        "returnDate": null
+    },
+    {
+        "name": "Alice",
+        "lastname": "Smith",
+        "akkadianId": "ZXCVBN",
+        "passportNumber": "PLM-5678CD-EFG",
+        "planetOrigin": "Jupiter",
+        "origin": "venus",
+        "destination": "venus",
+        "roundTrip": true,
+        "departureDate": "2023-12-05T10:00:00.000Z",
+        "returnDate": "2023-12-15T16:00:00.000Z"
+    },
+    {
+        "name": "Bob",
+        "lastname": "Johnson",
+        "akkadianId": "UIOPUI",
+        "passportNumber": "JKL-9876EF-GHI",
+        "planetOrigin": "Saturn",
+        "origin": "uranus",
+        "destination": "uranus",
+        "roundTrip": true,
+        "departureDate": "2023-12-20T08:45:00.000Z",
+        "returnDate": "2023-12-25T17:30:00.000Z"
+    },
+    {
+        "name": "Eve",
+        "lastname": "Adams",
+        "akkadianId": "MNBVCMN",
+        "passportNumber": "QRS-5432GH-IJK",
+        "planetOrigin": "Neptune",
+        "origin": "pluto",
+        "destination": "pluto",
+        "roundTrip": false,
+        "departureDate": "2024-01-10T12:15:00.000Z",
+        "returnDate": null
+    },
+    {
+        "name": "Michael",
+        "lastname": "Brown",
+        "akkadianId": "LKJHGF",
+        "passportNumber": "TUV-6543KL-MNO",
+        "planetOrigin": "Uranus",
+        "origin": "jupiter",
+        "destination": "jupiter",
+        "roundTrip": true,
+        "departureDate": "2024-01-20T09:30:00.000Z",
+        "returnDate": "2024-01-25T18:45:00.000Z"
+    },
+    {
+        "name": "Sarah",
+        "lastname": "Wilson",
+        "akkadianId": "POIUYT",
+        "passportNumber": "ABC-7890PQ-RST",
+        "planetOrigin": "Pluto",
+        "origin": "saturn",
+        "destination": "saturn",
+        "roundTrip": true,
+        "departureDate": "2024-02-05T07:00:00.000Z",
+        "returnDate": "2024-02-15T14:00:00.000Z"
+    },
+    {
+        "name": "David",
+        "lastname": "Martin",
+        "akkadianId": "MZXCNB",
+        "passportNumber": "DFG-2345MN-OPQ",
+        "planetOrigin": "Mars",
+        "origin": "venus",
+        "destination": "venus",
+        "roundTrip": false,
+        "departureDate": "2024-02-20T11:45:00.000Z",
+        "returnDate": null
+    },
+    {
+        "name": "Linda",
+        "lastname": "Jackson",
+        "akkadianId": "NVCXVN",
+        "passportNumber": "GHI-8901RS-TUV",
+        "planetOrigin": "Jupiter",
+        "origin": "earth",
+        "destination": "earth",
+        "roundTrip": true,
+        "departureDate": "2024-03-10T13:30:00.000Z",
+        "returnDate": "2024-03-15T20:30:00.000Z"
+    },
+    {
+        "name": "Tom",
+        "lastname": "Anderson",
+        "akkadianId": "ASDFGH",
+        "passportNumber": "JKL-1234AB-CDE",
+        "planetOrigin": "Saturn",
+        "origin": "mars",
+        "destination": "mars",
+        "roundTrip": true,
+        "departureDate": "2024-03-20T08:00:00.000Z",
+        "returnDate": "2024-03-25T16:00:00.000Z"
+    }
+]
